@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lecture01a" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nashville Software School" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ic4-9l-7ts">
+                                <rect key="frame" x="20" y="20" width="560" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="GzL-HC-yLC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="25"/>
+                                <color key="textColor" red="0.60392156860000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHE-e9-dxx">
+                                <rect key="frame" x="20" y="75" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="Tfv-nc-cpQ"/>
+                                    <constraint firstAttribute="width" constant="240" id="czB-5F-QE1"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="oDi-6i-Fxf"/>
+                                    <constraint firstAttribute="height" constant="128" id="yuX-uU-xbq"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Tfv-nc-cpQ"/>
+                                        <exclude reference="oDi-6i-Fxf"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mo5-Qr-umQ">
+                                <rect key="frame" x="340" y="75" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63416099550000005" green="0.80330598350000004" blue="0.77826392649999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mo5-Qr-umQ" firstAttribute="top" secondItem="oHE-e9-dxx" secondAttribute="top" id="3TU-E7-wYW"/>
+                            <constraint firstItem="Mo5-Qr-umQ" firstAttribute="leading" secondItem="oHE-e9-dxx" secondAttribute="trailing" constant="80" id="4XA-5a-EVu"/>
+                            <constraint firstItem="ic4-9l-7ts" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="7Ns-zz-lsi"/>
+                            <constraint firstItem="oHE-e9-dxx" firstAttribute="top" secondItem="ic4-9l-7ts" secondAttribute="bottom" constant="8" symbolic="YES" id="9Dd-Oy-Lhn"/>
+                            <constraint firstItem="ic4-9l-7ts" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="HIF-Es-xct"/>
+                            <constraint firstItem="oHE-e9-dxx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Kkk-It-5Px"/>
+                            <constraint firstItem="Mo5-Qr-umQ" firstAttribute="leading" secondItem="oHE-e9-dxx" secondAttribute="trailing" constant="80" id="NfU-6Q-unP"/>
+                            <constraint firstItem="ic4-9l-7ts" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="RVx-b0-acv"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="oHE-e9-dxx" secondAttribute="bottom" constant="-54" id="Xtu-1g-7Z9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oHE-e9-dxx" secondAttribute="trailing" constant="-140" id="YRf-d8-QWa"/>
+                            <constraint firstItem="Mo5-Qr-umQ" firstAttribute="bottom" secondItem="oHE-e9-dxx" secondAttribute="bottom" id="ZNp-Sw-miU"/>
+                            <constraint firstItem="Mo5-Qr-umQ" firstAttribute="trailing" secondItem="ic4-9l-7ts" secondAttribute="trailing" id="jyj-UN-s2G"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Xtu-1g-7Z9"/>
+                                <exclude reference="YRf-d8-QWa"/>
+                                <exclude reference="4XA-5a-EVu"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="213" y="337"/>
+        </scene>
+    </scenes>
+</document>
