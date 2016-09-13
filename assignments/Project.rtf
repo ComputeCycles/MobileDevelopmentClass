@@ -1,0 +1,109 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red13\green108\blue175;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Project\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs28 \cf2 \expnd0\expndtw0\kerning0
+The objective of the final project is to produce a working Game of Life app with 3 tabs:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Instrumentation Tab\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Simulation Tab\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Statistics Tab\
+\pard\pardeftab720\partightenfactor0
+\cf2 Assignment 4 should serve as an excellent base for this app.\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf2 Model
+\b0 :\
+Your model for the final project should follow all of the requirements from Assignment 4. \'a0And must be cleaned up to follow the coding standards demonstrated in Lecture 7. \'a0Points will be deducted for code which does not follow standards.\
+
+\b GridView
+\b0 :\
+Your GridView from Assignment 3 needs to be enhanced with a property:\
+var points:[(Int,Int)]\
+when points is set, all cells EXCEPT for those in points are set to off. \'a0The cells specified in points are set to ALive. \'a0The getter for points should return an array of coordinates which are currently living (born or alive)\
+
+\b Instrumentation Tab
+\b0 \
+As before: the Instrumentation tab\'a0must allow\'a0the user to input the following characteristics:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+rows,\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+columns,\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+refreshRate (or interval),\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+start/stop timed update of the grid\
+\pard\pardeftab720\partightenfactor0
+\cf2 Additionally the Instrumentation tab should now have a table view Labeled "Configurations" whose number of rows and whose contents are determined by parsing a JSON file read from this link:\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dl.dropboxusercontent.com/u/7544475/S65g.json"}}{\fldrslt \cf3 https://dl.dropboxusercontent.com/u/7544475/S65g.json}}.\
+An example\'a0of the JSON file\'a0is:\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://canvas.harvard.edu/courses/12059/files/2515398/download?wrap=1"}}{\fldrslt \cf3 S65g-1.json}}\
+Each element\'a0in top level array will contain a title for the row and contents for a preconfigured collection of cells to be turned on in the grid.\
+Below\'a0the tab the user should be allowed to enter a URL from which to read the file. \'a0A default to use for this entry will be provided in class on the day we cover network access and JSON parsing. \'a0Next to the textfield for entry there should be a button "Reload" which empties the Table and reloads it from the internet.\
+When the user clicks on a row in the file, a segue should occur to a GridEditor controller which displays the content of the file in a GridView with the file content shown in the view. \'a0The user should be allowed to edit the cells and retain\'a0the representation in the tableview going forward. \'a0Clicking a "Save" button on the GridEditor should cause the user to return to the main instrumentation page. \'a0There should be a Cancel button instead a back button.\
+The Configuration table view should be located towards the top of the Instrumentation page and there should be a plus button in the navigation bar which allows the user to add rows to the\'a0\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf2 Simulation Tab:
+\b0 \
+The Simulation tab should be equipped with two new buttons:\
+Save, which should prompt the user for a name and take the current representation and associate it with that name in the tableview on the instrumentation page and\
+Reset, which should completely clear the contents of the grid view\
+
+\b Statistics Tab:
+\b0 \
+The statistics\'a0tab should remain as is, but should be reset whenever the user hits the reset button on the Simulation tab\
+
+\b Grading
+\b0 :\
+Grading for the project will be as follows:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Network Access properly working and parsing JSON: 50 points\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+TableView editing on Instrumentation page: 50\'a0points\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Properly working GridEditor page: 25 points\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Modifications to GridView: 25 points\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Subjective overall look of the app: 25\'a0points\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Properly formatted and specified model objects: 25 points\
+\pard\pardeftab720\partightenfactor0
+\cf2 Major points will be deducted for:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+failure to correctly separate model view and controller objects,\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+failure to implement protocols as specified in Assignment 4\
+\pard\pardeftab720\partightenfactor0
+\cf2 3 points will be deducted poor coding practices such as:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Warning messages during compilation, including layout messages\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Poor layout after rotating\'a0either the iPhone 5S or iPad 2\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
+Failure to use map/reduce appropriately\
+\pard\pardeftab720\partightenfactor0
+\cf2 \'a0\
+\'a0}
