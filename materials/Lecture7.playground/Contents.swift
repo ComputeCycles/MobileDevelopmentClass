@@ -8,6 +8,15 @@ enum CellState {
     case Born
     case Died
     
+    func isAlive() -> Bool {
+        switch self {
+        case .Alive, .Born:
+            return true
+        case .Empty, .Died:
+            return false
+        }
+    }
+    
     func displayValue() -> String {
         switch self {
         case .Alive:
@@ -56,7 +65,20 @@ struct Cell {
             grid[$1.x,$1.y]?.state == .Alive ? $0 + 1 : $0
         }
     }
+    
+    func nextState() -> CellState {
+        switch numLivingNeighbors() {
+        case 2 where self.state.isAlive(),
+             3:
+            return .Alive
+        default:
+            return .Empty
+        }
+    }
+    
+    
 }
+
 
 class Grid {
     var cells: [Cell] = [Cell]()
@@ -68,7 +90,11 @@ class Grid {
         self.cols = cols
         for i in 0 ..< cols {
             for j in 0 ..< rows {
-                let cell = Cell(grid: self, pos: (i, j), state: .Empty)
+                let randomState = arc4random_uniform(3) == 2 ? CellState.Alive :
+                    CellState.Empty
+                let cell = Cell(grid: self,
+                                pos: (i, j),
+                                state: randomState)
                 cells.append(cell)
             }
         }
@@ -95,12 +121,19 @@ var cell = grid[1,2]
 if var nonOptionalCell = cell {
     nonOptionalCell.pos
     nonOptionalCell.neighbors()
-    nonOptionalCell.state = .Alive
+    nonOptionalCell.state = .Empty
     grid[1,2] = nonOptionalCell
 }
 grid[1,2]?.state
 
-grid[0,2]?.numLivingNeighbors()
+grid[1,2]?.neighbors()
+grid[1,2]?.numLivingNeighbors()
+grid[1,1]?.state = .Alive
+grid[0,2]?.state = .Alive
+grid[1,3]?.state = .Alive
+grid[0,3]?.state = .Alive
+grid[1,2]?.nextState()
+
 
 
 
