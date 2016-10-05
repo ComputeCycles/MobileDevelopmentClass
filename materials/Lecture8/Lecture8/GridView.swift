@@ -10,11 +10,20 @@ import UIKit
 
 @IBDesignable class GridView: UIView {
     
-    var rows: Int = 4
-    var cols: Int = 4
-    
+    @IBInspectable var rows: Int = 4 {
+        didSet {
+            grid = Grid(rows: self.rows, cols: self.cols)
+        }
+    }
+    @IBInspectable var cols: Int = 4 {
+        didSet {
+            grid = Grid(rows: self.rows, cols: self.cols)
+        }
+    }
     @IBInspectable var cellColor = UIColor.yellow
     @IBInspectable var gridColor = UIColor.cyan
+    
+    var grid: Grid!
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -54,7 +63,12 @@ import UIKit
                     y:rect.origin.y + (rowFraction*rect.size.height))
                 let cell = CGRect(origin: cellOrigin, size: cellSize)
                 let path = UIBezierPath(ovalIn: cell)
-                cellColor.setFill()
+                let gridCell = grid[j,i]
+                var fillColor = UIColor.clear
+                if gridCell!.state.isAlive() {
+                    fillColor = cellColor
+                }
+                fillColor.setFill()
                 path.fill()
             }
         }
@@ -62,5 +76,44 @@ import UIKit
         //draw the stroke
         gridColor.setStroke()
         gridPath.stroke()
+    }
+    
+    func process(touches: Set<UITouch>) {
+        _ = touches.map {
+            convert(touch:$0)
+            }
+            .map {
+                if grid[$0.row, $0.col]!.state.isAlive() {
+                    grid[$0.row,$0.col]!.state = .Empty
+                }
+                else {
+                    grid[$0.row,$0.col]!.state = .Alive
+                }
+        }
+        setNeedsDisplay()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        process(touches: touches)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        process(touches: touches)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        process(touches: touches)
+    }
+    
+    typealias Position = (row: Int, col: Int)
+    func convert(touch: UITouch) -> Position {
+        let touchY = touch.location(in: self).y
+        let gridHeight = frame.size.height
+        let row = touchY / gridHeight * CGFloat(rows)
+        let touchX = touch.location(in: self).x
+        let gridWidth = frame.size.width
+        let col = touchX / gridWidth * CGFloat(cols)
+        let position = (row: Int(row), col: Int(col))
+        return position
     }
 }

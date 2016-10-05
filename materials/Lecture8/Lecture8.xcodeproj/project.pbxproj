@@ -15,6 +15,9 @@
 		FBD6F3701DA324D00053D3FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD6F36E1DA324D00053D3FC /* LaunchScreen.storyboard */; };
 		FBD6F3781DA327090053D3FC /* XView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6F3771DA327090053D3FC /* XView.swift */; };
 		FBD6F37A1DA337B20053D3FC /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6F3791DA337B20053D3FC /* GridView.swift */; };
+		FBD6F37C1DA48D810053D3FC /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6F37B1DA48D810053D3FC /* GridCell.swift */; };
+		FBD6F37E1DA48E610053D3FC /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6F37D1DA48E610053D3FC /* Grid.swift */; };
+		FBD6F3801DA497240053D3FC /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD6F37F1DA497240053D3FC /* SimulationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FBD6F3711DA324D00053D3FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBD6F3771DA327090053D3FC /* XView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XView.swift; sourceTree = "<group>"; };
 		FBD6F3791DA337B20053D3FC /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		FBD6F37B1DA48D810053D3FC /* GridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		FBD6F37D1DA48E610053D3FC /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		FBD6F37F1DA497240053D3FC /* SimulationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,9 @@
 				FBD6F36C1DA324D00053D3FC /* Assets.xcassets */,
 				FBD6F36E1DA324D00053D3FC /* LaunchScreen.storyboard */,
 				FBD6F3711DA324D00053D3FC /* Info.plist */,
+				FBD6F37B1DA48D810053D3FC /* GridCell.swift */,
+				FBD6F37D1DA48E610053D3FC /* Grid.swift */,
+				FBD6F37F1DA497240053D3FC /* SimulationViewController.swift */,
 			);
 			path = Lecture8;
 			sourceTree = "<group>";
@@ -151,6 +160,9 @@
 				FBD6F3641DA324D00053D3FC /* AppDelegate.swift in Sources */,
 				FBD6F37A1DA337B20053D3FC /* GridView.swift in Sources */,
 				FBD6F3661DA324D00053D3FC /* FirstViewController.swift in Sources */,
+				FBD6F3801DA497240053D3FC /* SimulationViewController.swift in Sources */,
+				FBD6F37E1DA48E610053D3FC /* Grid.swift in Sources */,
+				FBD6F37C1DA48D810053D3FC /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
