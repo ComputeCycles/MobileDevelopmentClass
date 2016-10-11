@@ -26,7 +26,7 @@ import UIKit
     @IBInspectable var gridColor = UIColor.cyan
     
     var grid: Grid!
-
+    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -38,13 +38,13 @@ import UIKit
         
         _ = ( 0 ... cols).map {
             let fraction = CGFloat($0) / CGFloat(cols)
-        gridPath.move(to: CGPoint(
-            x:rect.origin.x + ( fraction * rect.size.width),
-            y:rect.origin.y))
-        
-        gridPath.addLine(to: CGPoint(
-            x:rect.origin.x + ( fraction * rect.size.width),
-            y:rect.origin.y + rect.size.height))
+            gridPath.move(to: CGPoint(
+                x:rect.origin.x + ( fraction * rect.size.width),
+                y:rect.origin.y))
+            
+            gridPath.addLine(to: CGPoint(
+                x:rect.origin.x + ( fraction * rect.size.width),
+                y:rect.origin.y + rect.size.height))
         }
         
         _ = ( 0 ... rows).map {
@@ -62,7 +62,7 @@ import UIKit
                 let colFraction = CGFloat(i)/CGFloat(cols)
                 let rowFraction = CGFloat(j)/CGFloat(rows)
                 let cellOrigin = CGPoint(x:rect.origin.x + (colFraction*rect.size.width),
-                    y:rect.origin.y + (rowFraction*rect.size.height))
+                                         y:rect.origin.y + (rowFraction*rect.size.height))
                 let cell = CGRect(origin: cellOrigin, size: cellSize)
                 let path = UIBezierPath(ovalIn: cell)
                 let gridCell = grid[j,i]

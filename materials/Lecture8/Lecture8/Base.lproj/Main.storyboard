@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,10 +20,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q69-Sk-Dby" customClass="GridView" customModule="Lecture8" customModuleProvider="target">
-                                <frame key="frameInset" minX="37" minY="66" width="300" height="534"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q69-Sk-Dby" customClass="GridView" customModule="Lecture8" customModuleProvider="target">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q69-Sk-Dby" secondAttribute="height" multiplier="1:1" id="s9q-zt-xSC"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
@@ -42,6 +45,11 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="q69-Sk-Dby" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="CTw-pS-qdR"/>
+                            <constraint firstItem="q69-Sk-Dby" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="njO-76-dPq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="q69-Sk-Dby" secondAttribute="trailing" constant="21.5" id="vFp-eV-de9"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                 </viewController>
@@ -78,24 +86,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
-        </scene>
-        <!--Simulation View Controller-->
-        <scene sceneID="N80-LJ-rkk">
-            <objects>
-                <viewController id="SRJ-Lj-kF6" customClass="SimulationViewController" customModule="Lecture8" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7a7-Rz-r38"/>
-                        <viewControllerLayoutGuide type="bottom" id="ala-hq-gUR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iCs-0i-V2E">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wVa-Dd-RmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="880" y="1032"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

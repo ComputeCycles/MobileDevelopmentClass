@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A322" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Grid View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="GridViewController" customModule="Lecture9" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehA-uh-Ne0" customClass="GridView" customModule="Lecture9" customModuleProvider="target">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ehA-uh-Ne0" secondAttribute="height" multiplier="1:1" id="ENU-oK-is4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rows">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cols">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
+                                        <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="cellColor">
+                                        <color key="value" red="0.0" green="0.49688042534722221" blue="0.48613823784722221" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBo-F6-Oto">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IJY-ZL-RoG"/>
+                                    <constraint firstAttribute="width" constant="32" id="lgV-Sc-xaY"/>
+                                </constraints>
+                                <state key="normal" title="Step"/>
+                                <connections>
+                                    <action selector="stepWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="veC-oR-QRJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQH-uI-BxH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="Kgf-eV-Qep"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="NHA-BU-mQZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="xvi-zj-J4p"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="xwj-JW-zyj"/>
+                                </constraints>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rMp-I0-4qF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LBo-F6-Oto" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="44o-kG-t8S"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LBo-F6-Oto" secondAttribute="bottom" constant="20" id="7JT-sE-fXI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ehA-uh-Ne0" secondAttribute="trailing" constant="21.5" id="8MT-NK-hUs"/>
+                            <constraint firstItem="MQH-uI-BxH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KdH-W9-9QO"/>
+                            <constraint firstItem="ehA-uh-Ne0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21.5" id="Pty-ZP-0kh"/>
+                            <constraint firstItem="LBo-F6-Oto" firstAttribute="top" secondItem="MQH-uI-BxH" secondAttribute="bottom" constant="8" id="WqS-Ud-ULK"/>
+                            <constraint firstItem="ehA-uh-Ne0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cfd-Nf-h3k"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gridView" destination="ehA-uh-Ne0" id="Lfi-lN-wsb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
