@@ -8,24 +8,24 @@
 
 import UIKit
 
-@IBDesignable class GridView: UIView {
+
+protocol GridViewDataSource {
+    var rows: Int { get set }
+    var cols: Int { get set }
+    subscript (x: Int, y: Int) -> GridCellState? { get set }
+}
+
+
+class GridView: UIView {
     
     var lastTouchedPosition: Position?
+    var dataSource: GridViewDataSource!
     
-    @IBInspectable var rows: Int = 4 {
-        didSet {
-            grid = Grid(rows: self.rows, cols: self.cols)
-        }
-    }
-    @IBInspectable var cols: Int = 4 {
-        didSet {
-            grid = Grid(rows: self.rows, cols: self.cols)
-        }
-    }
-    @IBInspectable var cellColor = UIColor.yellow
-    @IBInspectable var gridColor = UIColor.cyan
+    var rows: Int = 4
+    var cols: Int = 4
     
-    var grid: Grid!
+    var cellColor = UIColor.yellow
+    var gridColor = UIColor.cyan
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -65,13 +65,14 @@ import UIKit
                                          y:rect.origin.y + (rowFraction*rect.size.height))
                 let cell = CGRect(origin: cellOrigin, size: cellSize)
                 let path = UIBezierPath(ovalIn: cell)
-                let gridCell = grid[j,i]
-                var fillColor = UIColor.clear
-                if gridCell!.state.isAlive() {
-                    fillColor = cellColor
+                if let state = dataSource?[j,i] {
+                    var fillColor = UIColor.clear
+                    if state.isAlive() {
+                        fillColor = cellColor
+                    }
+                    fillColor.setFill()
+                    path.fill()
                 }
-                fillColor.setFill()
-                path.fill()
             }
         }
         
@@ -100,12 +101,15 @@ import UIKit
         guard lastTouchedPosition?.row != position.row
             || lastTouchedPosition?.col != position.col
             else { return position }
+        guard var grid = dataSource else { return position }
+        guard grid[position.row, position.col] != nil
+            else { return position }
         
-        if grid[position.row, position.col]!.state.isAlive() {
-            grid[position.row,position.col]!.state = .Empty
+        if (grid[position.row, position.col] == .Alive) {
+            grid[position.row,position.col] = .Empty
         }
         else {
-            grid[position.row, position.col]!.state = .Alive
+            grid[position.row, position.col] = .Alive
         }
         setNeedsDisplay()
         return position
