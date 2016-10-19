@@ -29,15 +29,6 @@ class GridViewController: UIViewController, EngineDelegate, GridViewDataSource {
                        name: name,
                        object: nil)
     }
-
-    var rows: Int {
-        get { return engine.rows }
-        set(newValue) { engine.rows = newValue }
-    }
-    var cols: Int {
-        get { return engine.cols }
-        set(newValue) { engine.cols = newValue }
-    }
     
     subscript (x: Int, y: Int) -> GridCellState? {
         get { return engine.grid![x,y]?.state }

@@ -36,14 +36,14 @@ class Engine {
                         print("timer went off")
                         self.step()
                         // self.updateClosure?(self.grid)
-//                        self.delegate?.engine(engine: self,
-//                                              didUpdateGrid: self.grid)
-                        let nc = NotificationCenter.default
-                        let name = Notification.Name(rawValue: "EngineUpdate")
-                        let n = Notification(name: name,
-                                             object: nil,
-                                             userInfo: ["grid" : self.grid])
-                        nc.post(n)
+                        self.delegate?.engine(engine: self,
+                                              didUpdateGrid: self.grid)
+//                        let nc = NotificationCenter.default
+//                        let name = Notification.Name(rawValue: "EngineUpdate")
+//                        let n = Notification(name: name,
+//                                             object: nil,
+//                                             userInfo: ["grid" : self.grid])
+//                        nc.post(n)
                 }
             }
             else {

@@ -10,8 +10,6 @@ import UIKit
 
 
 protocol GridViewDataSource {
-    var rows: Int { get set }
-    var cols: Int { get set }
     subscript (x: Int, y: Int) -> GridCellState? { get set }
 }
 
