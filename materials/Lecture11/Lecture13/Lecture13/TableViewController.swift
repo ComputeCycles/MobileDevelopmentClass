@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Lecture11
+//  Lecture13
 //
 //  Created by Van Simmons on 10/17/16.
 //  Copyright © 2016 ComputeCycles, LLC. All rights reserved.
@@ -24,20 +24,20 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     //MARK: DataSource Methods
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return names.count/2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,8 +45,8 @@ class TableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellName)
             else {
                 preconditionFailure("Could not get a nameCell.  You probably did not set it correctly in the Storyboard")
-            }
-        cell.textLabel!.text = names[indexPath.row]
+        }
+        cell.textLabel!.text = names[indexPath.section * names.count / 2 + indexPath.row]
         return cell
     }
     
@@ -54,22 +54,6 @@ class TableViewController: UITableViewController {
         return "Section Title for section: \(section)"
     }
     
-    //MARK: Delegate Methods
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            names.remove(at: indexPath.row)
-            //            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
-        }
-    }
-    
-    willDes
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.yellow
-    }
-    
-    //MARK: Editor ViewController Support
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let tappedCell = sender as? UITableViewCell
             else {
