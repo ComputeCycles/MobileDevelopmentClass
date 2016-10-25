@@ -62,12 +62,10 @@ class TableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
-    willDes
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.yellow
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.yellow
+//    }
     
     //MARK: Editor ViewController Support
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
