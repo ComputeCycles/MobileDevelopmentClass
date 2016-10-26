@@ -23,7 +23,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func fetch(_ sender: AnyObject) {
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=boston,%20ma&appid=77e555f36584bc0c3d55e1e584960580") else {
+            return
+        }
+        let fetcher = Fetcher()
+        fetcher.fetchJSON(url: url) { (json, message) in
+            print("\(json), \(message)")
+        }
+        print("Hey I'm here")
     }
+    
+    
+    
+    
+    
 
 }
 
