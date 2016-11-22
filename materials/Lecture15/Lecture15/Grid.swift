@@ -35,12 +35,14 @@ struct GridCell {
         self.grid = grid
     }
     
-    func neighbors() -> [Position] {
-        return offsets.map { (offset: Position) in
-            let offset: Position =
-                (x: ((self.pos.x + offset.x) + grid.cols) % grid.cols,
-                 y: ((self.pos.y + offset.y) + grid.rows) % grid.rows)
-            return offset
+    var neighbors: [Position] {
+        get {
+            return offsets.map { (offset: Position) in
+                let offset: Position =
+                    (x: ((self.pos.x + offset.x) + grid.cols) % grid.cols,
+                     y: ((self.pos.y + offset.y) + grid.rows) % grid.rows)
+                return offset
+            }
         }
     }
     func forNeighbors() -> [Position] {
@@ -53,13 +55,13 @@ struct GridCell {
         return neighbors
     }
     func numLivingNeighbors () -> Int {
-        return neighbors().reduce(0) {
+        return neighbors.reduce(0) {
             grid[$1.x,$1.y]?.state == .alive ? $0 + 1 : $0
         }
     }
     func forNumLivingNeighbors () -> Int {
         var returnValue:Int = 0
-        for neighbor in neighbors() {
+        for neighbor in neighbors {
             returnValue = grid[neighbor.x, neighbor.y]?.state == .alive ? returnValue + 1 : returnValue
         }
         return returnValue
@@ -84,7 +86,7 @@ class Grid {
     init(rows: Int, cols: Int) {
         self.rows = rows
         self.cols = cols
-        for i in 0 ..< cols {
+        (0 ..< cols ).forEach { i in
             for j in 0 ..< rows {
                 let randomState = GridCellState.empty
                 let cell = GridCell(grid: self,
@@ -95,6 +97,8 @@ class Grid {
         }
     }
     
+    // let someGridCell = grid[col, row]
+    // grid[col, row] = someGridCell
     subscript (x: Int, y: Int) -> GridCell? {
         get {
             guard x >= 0 && y >= 0 else { return nil }
@@ -111,40 +115,22 @@ class Grid {
 }
 
 protocol EngineDelegate {
-    func engine(engine: Engine, didUpdateGrid: Grid)
+    func engineDidUpdate(engine: Engine)
 }
 
 class Engine {
-    var rows: Int = 0
-    var cols: Int = 0
-    var grid: Grid! {
-        didSet {
-            rows = grid.rows
-            cols = grid.cols
-        }
-    }
-    
+    var grid: Grid
     var delegate: EngineDelegate?
     
     var updateClosure: ((Grid) -> Void)?
     var timer: Timer?
-    var timerInterval: TimeInterval = 0 {
+    var timerInterval: TimeInterval = 0.0 {
         didSet {
-            if timerInterval > 0 {
+            if timerInterval > 0.0 {
                 timer = Timer.scheduledTimer(
                     withTimeInterval: timerInterval,
                     repeats: true) { (t: Timer) in
-                        print("timer went off")
                         self.step()
-                        // self.updateClosure?(self.grid)
-                        self.delegate?.engine(engine: self,
-                                              didUpdateGrid: self.grid)
-                        //                        let nc = NotificationCenter.default
-                        //                        let name = Notification.Name(rawValue: "EngineUpdate")
-                        //                        let n = Notification(name: name,
-                        //                                             object: nil,
-                        //                                             userInfo: ["grid" : self.grid])
-                        //                        nc.post(n)
                 }
             }
             else {
@@ -155,17 +141,23 @@ class Engine {
     }
     
     init(rows: Int, cols: Int) {
-        self.rows = rows
-        self.cols = cols
         self.grid = Grid(rows: rows, cols: cols)
     }
     
     func step() {
-        let newGrid = Grid(rows: rows, cols: cols)
+        let newGrid = Grid(rows: grid.rows, cols: grid.cols)
         grid.cells.forEach { (cell) in
             newGrid[cell.pos.x, cell.pos.y]?.state = cell.nextState()
         }
         grid = newGrid
+        // updateClosure?(self.grid)
+        delegate?.engineDidUpdate(engine: self)
+        //  let nc = NotificationCenter.default
+        //  let name = Notification.Name(rawValue: "EngineUpdate")
+        //  let n = Notification(name: name,
+        //                       object: nil,
+        //                       userInfo: ["grid" : self.grid])
+        //                       nc.post(n)
     }
 }
 

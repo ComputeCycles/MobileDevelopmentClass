@@ -52,7 +52,7 @@ protocol GridViewDataSource {
         //set the path's line width to the height of the stroke
         gridPath.lineWidth = 2.0
         
-        _ = ( 0 ... cols).map {
+        ( 0 ... cols).forEach {
             let fraction = CGFloat($0) / CGFloat(cols)
             gridPath.move(to: CGPoint(
                 x:rect.origin.x + ( fraction * rect.size.width),
@@ -63,7 +63,7 @@ protocol GridViewDataSource {
                 y:rect.origin.y + rect.size.height))
         }
         
-        _ = ( 0 ... rows).map {
+        ( 0 ... rows).forEach {
             let fraction = CGFloat($0) / CGFloat(rows)
             gridPath.move(to: CGPoint(x: rect.origin.x,
                                       y: rect.origin.y + fraction * rect.size.height))
@@ -75,19 +75,19 @@ protocol GridViewDataSource {
                               height: rect.size.height/CGFloat(rows))
         for  i in 0 ..< cols {
             for  j in 0 ..< rows {
-                let colFraction = CGFloat(i)/CGFloat(cols)
-                let rowFraction = CGFloat(j)/CGFloat(rows)
-                let cellOrigin = CGPoint(x:rect.origin.x + (colFraction*rect.size.width),
-                                         y:rect.origin.y + (rowFraction*rect.size.height))
-                let cell = CGRect(origin: cellOrigin, size: cellSize)
-                let path = UIBezierPath(ovalIn: cell)
                 if let state = dataSource?.cellState(x: j, y: i) {
                     var fillColor = UIColor.clear
                     if state.isAlive() {
+                        let colFraction = CGFloat(i)/CGFloat(cols)
+                        let rowFraction = CGFloat(j)/CGFloat(rows)
+                        let cellOrigin = CGPoint(x:rect.origin.x + (colFraction*rect.size.width),
+                                                 y:rect.origin.y + (rowFraction*rect.size.height))
+                        let cell = CGRect(origin: cellOrigin, size: cellSize)
+                        let path = UIBezierPath(ovalIn: cell)
                         fillColor = cellColor
+                        fillColor.setFill()
+                        path.fill()
                     }
-                    fillColor.setFill()
-                    path.fill()
                 }
             }
         }
