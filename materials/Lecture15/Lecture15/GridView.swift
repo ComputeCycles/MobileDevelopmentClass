@@ -77,17 +77,27 @@ protocol GridViewDataSource {
             for  j in 0 ..< rows {
                 if let state = dataSource?.cellState(x: j, y: i) {
                     var fillColor = UIColor.clear
-                    if state.isAlive() {
-                        let colFraction = CGFloat(i)/CGFloat(cols)
-                        let rowFraction = CGFloat(j)/CGFloat(rows)
-                        let cellOrigin = CGPoint(x:rect.origin.x + (colFraction*rect.size.width),
-                                                 y:rect.origin.y + (rowFraction*rect.size.height))
-                        let cell = CGRect(origin: cellOrigin, size: cellSize)
-                        let path = UIBezierPath(ovalIn: cell)
+                    let colFraction = CGFloat(i)/CGFloat(cols)
+                    let rowFraction = CGFloat(j)/CGFloat(rows)
+                    let cellOrigin = CGPoint(x:rect.origin.x + (colFraction*rect.size.width),
+                                             y:rect.origin.y + (rowFraction*rect.size.height))
+                    let cell = CGRect(origin: cellOrigin, size: cellSize)
+                    let path = UIBezierPath(ovalIn: cell)
+                    switch state {
+                    case .born:
+                        fillColor = cellColor.withAlphaComponent(0.5)
+                    case .alive:
                         fillColor = cellColor
-                        fillColor.setFill()
-                        path.fill()
+                    case .died:
+                        fillColor = UIColor(colorLiteralRed: 0.0,
+                                            green: 0.0,
+                                            blue: 0.0,
+                                            alpha: 0.2)
+                    case .empty:
+                        break
                     }
+                    fillColor.setFill()
+                    path.fill()
                 }
             }
         }

@@ -42,8 +42,10 @@ class SimulationViewController: UIViewController,
 
     @IBAction func toggle(_ sender: UISwitch) {
         if sender.isOn {
+            self.gridView.isUserInteractionEnabled = false
             engine.timerInterval = 0.5
         } else {
+            self.gridView.isUserInteractionEnabled = true
             engine.timerInterval = 0.0
         }
     }

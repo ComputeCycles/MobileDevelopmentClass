@@ -8,7 +8,7 @@
 
 //
 //  Grid.swift
-//  Lecture8
+//  Lecture15
 //
 //  Created by Van Simmons on 10/4/16.
 //  Copyright © 2016 ComputeCycles, LLC. All rights reserved.
@@ -27,58 +27,14 @@ private let offsets: [Position] = [
 struct GridCell {
     var pos: Position
     var state: GridCellState
-    var grid: Grid
     
     init(grid:Grid, pos:Position, state: GridCellState) {
         self.pos = pos
         self.state = state
-        self.grid = grid
-    }
-    
-    var neighbors: [Position] {
-        get {
-            return offsets.map { (offset: Position) in
-                let offset: Position =
-                    (x: ((self.pos.x + offset.x) + grid.cols) % grid.cols,
-                     y: ((self.pos.y + offset.y) + grid.rows) % grid.rows)
-                return offset
-            }
-        }
-    }
-    func forNeighbors() -> [Position] {
-        var neighbors: [Position] = []
-        for offset in offsets {
-            let neighbor = (x: ((self.pos.x + offset.x) + grid.cols) % grid.cols,
-                            y: ((self.pos.y + offset.y) + grid.rows) % grid.rows)
-            neighbors.append(neighbor)
-        }
-        return neighbors
-    }
-    func numLivingNeighbors () -> Int {
-        return neighbors.reduce(0) {
-            grid[$1.x,$1.y]?.state == .alive ? $0 + 1 : $0
-        }
-    }
-    func forNumLivingNeighbors () -> Int {
-        var returnValue:Int = 0
-        for neighbor in neighbors {
-            returnValue = grid[neighbor.x, neighbor.y]?.state == .alive ? returnValue + 1 : returnValue
-        }
-        return returnValue
-    }
-    
-    func nextState() -> GridCellState {
-        switch numLivingNeighbors() {
-        case 2 where self.state.isAlive(),
-             3:
-            return .alive
-        default:
-            return .empty
-        }
     }
 }
 
-class Grid {
+struct Grid {
     var cells: [GridCell] = [GridCell]()
     var rows: Int = 0
     var cols: Int = 0
@@ -87,7 +43,7 @@ class Grid {
         self.rows = rows
         self.cols = cols
         (0 ..< cols ).forEach { i in
-            for j in 0 ..< rows {
+             (0 ..< rows).forEach { j in
                 let randomState = GridCellState.empty
                 let cell = GridCell(grid: self,
                                     pos: (i, j),
@@ -112,6 +68,32 @@ class Grid {
             cells[(x*cols) + y] = newValue
         }
     }
+    
+    private func neighborsOf(cell: GridCell) -> [Position] {
+        return offsets.map { (offset: Position) in
+            let offset: Position =
+                (x: ((cell.pos.x + offset.x) + cols) % cols,
+                 y: ((cell.pos.y + offset.y) + rows) % rows)
+            return offset
+        }
+    }
+
+    private func numLivingNeighborsOf(cell: GridCell) -> Int {
+        return neighborsOf(cell: cell).reduce(0) {
+            (self[$1.x,$1.y]?.state.isAlive())! ? $0 + 1 : $0
+        }
+    }
+    
+    func nextStateOf(cell: GridCell) -> GridCellState {
+        switch numLivingNeighborsOf(cell: cell) {
+        case 2 where cell.state.isAlive(),
+             3:
+            return cell.state.isAlive() ? .alive : .born
+        default:
+            return cell.state.isAlive() ? .died : .empty
+        }
+    }
+
 }
 
 protocol EngineDelegate {
@@ -145,9 +127,9 @@ class Engine {
     }
     
     func step() {
-        let newGrid = Grid(rows: grid.rows, cols: grid.cols)
+        var newGrid = Grid(rows: grid.rows, cols: grid.cols)
         grid.cells.forEach { (cell) in
-            newGrid[cell.pos.x, cell.pos.y]?.state = cell.nextState()
+            newGrid[cell.pos.x, cell.pos.y]?.state = grid.nextStateOf(cell: cell)
         }
         grid = newGrid
         // updateClosure?(self.grid)
