@@ -76,12 +76,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-qB-UDe">
-                                        <rect key="frame" x="0.0" y="117" width="375" height="437"/>
-                                        <connections>
-                                            <segue destination="SP5-MH-4k4" kind="embed" id="yyJ-aG-j0j"/>
-                                        </connections>
-                                    </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiA-oa-mGx">
                                         <rect key="frame" x="75.5" y="75" width="224" height="30"/>
                                         <subviews>
@@ -115,6 +109,12 @@
                                             <constraint firstItem="UwL-kt-b0f" firstAttribute="centerY" secondItem="IiA-oa-mGx" secondAttribute="centerY" id="yDE-tr-0wo"/>
                                         </constraints>
                                     </view>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-qB-UDe">
+                                        <rect key="frame" x="0.0" y="117" width="375" height="437"/>
+                                        <connections>
+                                            <segue destination="SP5-MH-4k4" kind="embed" id="yyJ-aG-j0j"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.63416099550000005" green="0.80330598350000004" blue="0.77826392649999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -151,16 +151,16 @@
             </objects>
             <point key="canvasLocation" x="876" y="-779.46026986506752"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Configuration View Controller-->
         <scene sceneID="mJv-2J-bv2">
             <objects>
-                <tableViewController id="SP5-MH-4k4" sceneMemberID="viewController">
+                <tableViewController id="SP5-MH-4k4" customClass="ConfigurationViewController" customModule="Lecture15" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ie3-qR-JwP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="437"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="MFb-dy-kAN">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Configuration" id="MFb-dy-kAN">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MFb-dy-kAN" id="vTW-Af-XJ8">
