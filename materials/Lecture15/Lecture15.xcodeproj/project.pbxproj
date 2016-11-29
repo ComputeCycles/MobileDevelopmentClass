@@ -10,6 +10,7 @@
 		FB01DF6E1DDA9A6300D7AB9A /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01DF6D1DDA9A6300D7AB9A /* Grid.swift */; };
 		FB99AEFC1DE525FE00744F15 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99AEFB1DE525FE00744F15 /* ConfigurationViewController.swift */; };
 		FB99AEFE1DE5264000744F15 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99AEFD1DE5264000744F15 /* Fetcher.swift */; };
+		FB99AF101DED193700744F15 /* ConfigGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99AF0F1DED193700744F15 /* ConfigGridViewController.swift */; };
 		FBE123401DD158BC00661928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE1233F1DD158BC00661928 /* AppDelegate.swift */; };
 		FBE123421DD158BC00661928 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE123411DD158BC00661928 /* InstrumentationViewController.swift */; };
 		FBE123441DD158BC00661928 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE123431DD158BC00661928 /* SimulationViewController.swift */; };
@@ -23,6 +24,7 @@
 		FB01DF6D1DDA9A6300D7AB9A /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		FB99AEFB1DE525FE00744F15 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		FB99AEFD1DE5264000744F15 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		FB99AF0F1DED193700744F15 /* ConfigGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigGridViewController.swift; sourceTree = "<group>"; };
 		FBE1233C1DD158BC00661928 /* Lecture15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lecture15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBE1233F1DD158BC00661928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBE123411DD158BC00661928 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				FBE123411DD158BC00661928 /* InstrumentationViewController.swift */,
 				FBE123431DD158BC00661928 /* SimulationViewController.swift */,
 				FB99AEFB1DE525FE00744F15 /* ConfigurationViewController.swift */,
+				FB99AF0F1DED193700744F15 /* ConfigGridViewController.swift */,
 				FBE123451DD158BC00661928 /* Main.storyboard */,
 				FBE123481DD158BC00661928 /* Assets.xcassets */,
 				FBE1234A1DD158BC00661928 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 				FBE123441DD158BC00661928 /* SimulationViewController.swift in Sources */,
 				FBE123401DD158BC00661928 /* AppDelegate.swift in Sources */,
 				FBE123541DD1618E00661928 /* GridView.swift in Sources */,
+				FB99AF101DED193700744F15 /* ConfigGridViewController.swift in Sources */,
 				FB01DF6E1DDA9A6300D7AB9A /* Grid.swift in Sources */,
 				FB99AEFC1DE525FE00744F15 /* ConfigurationViewController.swift in Sources */,
 				FBE123421DD158BC00661928 /* InstrumentationViewController.swift in Sources */,
