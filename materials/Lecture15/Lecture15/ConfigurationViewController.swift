@@ -27,10 +27,16 @@ class ConfigurationViewController: UITableViewController {
             return
         }
         let fetcher = Fetcher()
-        fetcher.fetchJSON(url: url) { (json: Any?, message: String?) in
-            self.json = json as? [Any] ?? []
-            OperationQueue.main.addOperation {
-                self.tableView.reloadData()
+        fetcher.fetchJSON(url: url) { (_ result: EitherOr) in
+            switch result {
+            case .success(let json):
+                self.json = json as? [Any] ?? []
+                OperationQueue.main.addOperation {
+                    self.tableView.reloadData()
+                }
+                
+            case .failure:
+                break
             }
         }
     }

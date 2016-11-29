@@ -16,6 +16,11 @@
 
 import Foundation
 
+enum EitherOr {
+    case success(Any)
+    case failure(String)
+}
+
 class Fetcher: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
     
     func session() -> URLSession {
@@ -52,42 +57,43 @@ class Fetcher: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
     }
     
     //MARK: Fetcher methods
-    typealias JSONCompletionHandler = (_ json: Any?, _ message: String?) -> Void
-    func fetchJSON(url: URL,
-                   completion: @escaping JSONCompletionHandler) {
-        fetch(url: url) { (data, message) in
-            guard let data = data
-                else {
-                    return completion(nil, message)
+    typealias JSONCompletionHandler = (_ result: EitherOr) -> Void
+    func fetchJSON(url: URL, completion: @escaping JSONCompletionHandler) {
+        fetch(url: url) { (_ result: EitherOr) in
+            switch result {
+            case .failure(let message):
+                return completion(.failure(message))
+            case .success(let data as Data):
+                guard let json = try?
+                    JSONSerialization.jsonObject(with: data,
+                                                 options: .allowFragments)
+                    else {
+                        return completion(.failure("Could not parse JSON"))
+                    }
+                completion(.success(json))
+            default:
+                break
             }
-            guard let json = try? JSONSerialization.jsonObject(with: data,
-                                                               options: .allowFragments)
-                else {
-                    return completion(nil, "Could not parse JSON")
-            }
-            completion(json, nil)
         }
-        
     }
     
-    typealias FetchCompletionHandler = (_ data: Data?, _ message: String?) -> Void
+    typealias FetchCompletionHandler = (_ result: EitherOr) -> Void
     func fetch(url: URL, completion: @escaping FetchCompletionHandler) {
         let task = session().dataTask(with: url) {
             (data: Data?, response: URLResponse?, netError: Error?) in
-            guard let response = response as? HTTPURLResponse,
-                netError == nil
+            guard let response = response as? HTTPURLResponse, netError == nil
                 else {
-                    return completion(nil, netError?.localizedDescription)
-            }
+                    return completion(.failure(netError!.localizedDescription))
+                }
             guard response.statusCode == 200
                 else {
-                    return completion(nil, "\(response.description)")
-            }
+                    return completion(.failure("\(response.description)"))
+                }
             guard let data = data
                 else {
-                    return completion(nil, "valid response but no data")
-            }
-            completion(data, nil)
+                    return completion(.failure("valid response but no data"))
+                }
+            completion(.success(data))
         }
         task.resume()
     }
