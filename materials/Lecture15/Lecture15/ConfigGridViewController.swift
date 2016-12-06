@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfigGridViewController: UIViewController {
+class ConfigGridViewController: UIViewController, GridViewDataSource {
 
     @IBOutlet weak var gridView: GridView!
     var grid: Grid!
@@ -17,14 +17,27 @@ class ConfigGridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let (rows, cols) = computeGridSize()
+        gridView.rows = rows
+        gridView.cols = cols
+        gridView.dataSource = self
         grid = Grid(rows: rows, cols: cols)
         if let values = config["contents"] as? [[Int]] {
             values.forEach { (coord:[Int]) in
-                grid[coord[0], coord[1]]!.state = .alive
+                let newCell = GridCell(pos: (coord[0], coord[1]),
+                                       state: .alive)
+                grid[coord[0], coord[1]] = newCell
             }
         }
     }
     
+    func cellState(x: Int, y: Int) -> GridCellState? {
+        return grid[x, y]?.state
+    }
+    
+    func setCellState(x: Int, y: Int, state: GridCellState) {
+        grid[x,y]?.state = state
+    }
+
     func computeGridSize() -> (rows: Int, cols: Int) {
         var max: Int = 1
         if let values = config["contents"] as? [[Int]] {
@@ -37,5 +50,11 @@ class ConfigGridViewController: UIViewController {
         }
         return (max*2, max*2)
     }
-
+    
+    @IBAction func save(_ sender: Any) {
+        (UIApplication.shared.delegate as! AppDelegate).engine.grid = grid
+        let center = NotificationCenter.default
+        let n = Notification(name: Notification.Name(rawValue: ENGINE_UPDATED))
+        center.post(n)
+    }
 }

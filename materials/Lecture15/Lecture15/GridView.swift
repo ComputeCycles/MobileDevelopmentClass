@@ -41,7 +41,7 @@ protocol GridViewDataSource {
     @IBInspectable var cols: Int = 4
     
     @IBInspectable var cellColor = UIColor.yellow
-    @IBInspectable var gridColor = UIColor.cyan
+    @IBInspectable var gridColor = UIColor.darkGray
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -50,7 +50,7 @@ protocol GridViewDataSource {
         let gridPath = UIBezierPath()
         
         //set the path's line width to the height of the stroke
-        gridPath.lineWidth = 2.0
+        gridPath.lineWidth = 1.0
         
         ( 0 ... cols).forEach {
             let fraction = CGFloat($0) / CGFloat(cols)

@@ -16,6 +16,8 @@
 
 import Foundation
 
+var ENGINE_UPDATED = "engine updated"
+
 typealias Position = (x: Int, y: Int)
 
 private let offsets: [Position] = [
@@ -28,13 +30,13 @@ struct GridCell {
     var pos: Position
     var state: GridCellState
     
-    init(grid:Grid, pos:Position, state: GridCellState) {
+    init(pos:Position, state: GridCellState) {
         self.pos = pos
         self.state = state
     }
 }
 
-struct Grid {
+class Grid {
     var cells: [GridCell] = [GridCell]()
     var rows: Int = 0
     var cols: Int = 0
@@ -45,8 +47,7 @@ struct Grid {
         (0 ..< cols ).forEach { i in
              (0 ..< rows).forEach { j in
                 let randomState = GridCellState.empty
-                let cell = GridCell(grid: self,
-                                    pos: (i, j),
+                let cell = GridCell(pos: (i, j),
                                     state: randomState)
                 cells.append(cell)
             }
@@ -127,7 +128,7 @@ class Engine {
     }
     
     func step() {
-        var newGrid = Grid(rows: grid.rows, cols: grid.cols)
+        let newGrid = Grid(rows: grid.rows, cols: grid.cols)
         grid.cells.forEach { (cell) in
             newGrid[cell.pos.x, cell.pos.y]?.state = grid.nextStateOf(cell: cell)
         }

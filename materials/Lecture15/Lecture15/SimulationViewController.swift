@@ -12,13 +12,21 @@ class SimulationViewController: UIViewController,
     EngineDelegate, GridViewDataSource {
 
     @IBOutlet weak var gridView: GridView!
-    var engine: Engine = Engine(rows: 10, cols: 10)
+    var engine: Engine = (UIApplication.shared.delegate as! AppDelegate).engine
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         gridView.dataSource = self
         engine.delegate = self
+        let center = NotificationCenter.default
+        center.addObserver(forName: NSNotification.Name(rawValue:ENGINE_UPDATED),
+                           object: nil,
+                           queue: nil) { (n: Notification) -> Void in
+                            self.gridView.rows = self.engine.grid.rows
+                            self.gridView.cols = self.engine.grid.cols
+                            self.gridView.setNeedsDisplay()
+        }
     }
 
     //MARK: EngineDelegateProtocol
@@ -43,7 +51,7 @@ class SimulationViewController: UIViewController,
     @IBAction func toggle(_ sender: UISwitch) {
         if sender.isOn {
             self.gridView.isUserInteractionEnabled = false
-            engine.timerInterval = 0.5
+            engine.timerInterval = 0.05
         } else {
             self.gridView.isUserInteractionEnabled = true
             engine.timerInterval = 0.0
