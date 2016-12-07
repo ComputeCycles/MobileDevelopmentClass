@@ -13,12 +13,16 @@ class SimulationViewController: UIViewController,
 
     @IBOutlet weak var gridView: GridView!
     var engine: Engine = (UIApplication.shared.delegate as! AppDelegate).engine
+    var defaults: UserDefaults = UserDefaults.standard
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         gridView.dataSource = self
         engine.delegate = self
+        self.gridView.rows = Int(defaults.value(forKey: "Rows") as? Float ?? 5.0)
+        self.gridView.cols = Int(defaults.value(forKey: "Columns") as? Float ?? 5.0)
         let center = NotificationCenter.default
         center.addObserver(forName: NSNotification.Name(rawValue:ENGINE_UPDATED),
                            object: nil,

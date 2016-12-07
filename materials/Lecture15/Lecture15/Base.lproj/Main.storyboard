@@ -181,7 +181,9 @@
                     <navigationItem key="navigationItem" title="Instrumentation" id="fIM-Wc-jis"/>
                     <connections>
                         <outlet property="colLabel" destination="YYU-rm-6RO" id="imJ-Vs-Rn0"/>
+                        <outlet property="colsSlider" destination="D6v-Lh-Er3" id="6eb-d5-f8t"/>
                         <outlet property="rowLabel" destination="IyQ-EK-l8a" id="85w-gW-myp"/>
+                        <outlet property="rowsSlider" destination="ke9-C5-yFL" id="9Yz-Gd-XW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -410,9 +412,9 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="poq-BU-HXb" kind="relationship" relationship="viewControllers" id="bhe-s6-Znh"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="kgX-vE-KLz" kind="relationship" relationship="viewControllers" id="Vrz-ip-Vn2"/>
-                        <segue destination="poq-BU-HXb" kind="relationship" relationship="viewControllers" id="bhe-s6-Znh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

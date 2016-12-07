@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FB01DF6E1DDA9A6300D7AB9A /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01DF6D1DDA9A6300D7AB9A /* Grid.swift */; };
+		FB59E35C1DF79B9A00FC5DD7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FB59E35B1DF79B9A00FC5DD7 /* Settings.bundle */; };
+		FB59E35E1DF79FC100FC5DD7 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB59E35D1DF79FC100FC5DD7 /* Keychain.swift */; };
 		FB99AEFC1DE525FE00744F15 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99AEFB1DE525FE00744F15 /* ConfigurationViewController.swift */; };
 		FB99AEFE1DE5264000744F15 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99AEFD1DE5264000744F15 /* Fetcher.swift */; };
 		FB99AF101DED193700744F15 /* ConfigGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB99AF0F1DED193700744F15 /* ConfigGridViewController.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		FB01DF6D1DDA9A6300D7AB9A /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		FB59E35B1DF79B9A00FC5DD7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		FB59E35D1DF79FC100FC5DD7 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		FB99AEFB1DE525FE00744F15 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		FB99AEFD1DE5264000744F15 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		FB99AF0F1DED193700744F15 /* ConfigGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigGridViewController.swift; sourceTree = "<group>"; };
@@ -73,11 +77,13 @@
 				FB99AF0F1DED193700744F15 /* ConfigGridViewController.swift */,
 				FBE123451DD158BC00661928 /* Main.storyboard */,
 				FBE123481DD158BC00661928 /* Assets.xcassets */,
+				FB59E35B1DF79B9A00FC5DD7 /* Settings.bundle */,
 				FBE1234A1DD158BC00661928 /* LaunchScreen.storyboard */,
 				FBE1234D1DD158BC00661928 /* Info.plist */,
 				FBE123531DD1618E00661928 /* GridView.swift */,
 				FB01DF6D1DDA9A6300D7AB9A /* Grid.swift */,
 				FB99AEFD1DE5264000744F15 /* Fetcher.swift */,
+				FB59E35D1DF79FC100FC5DD7 /* Keychain.swift */,
 			);
 			path = Lecture15;
 			sourceTree = "<group>";
@@ -142,6 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB59E35C1DF79B9A00FC5DD7 /* Settings.bundle in Resources */,
 				FBE1234C1DD158BC00661928 /* LaunchScreen.storyboard in Resources */,
 				FBE123491DD158BC00661928 /* Assets.xcassets in Resources */,
 				FBE123471DD158BC00661928 /* Main.storyboard in Resources */,
@@ -160,6 +167,7 @@
 				FBE123401DD158BC00661928 /* AppDelegate.swift in Sources */,
 				FBE123541DD1618E00661928 /* GridView.swift in Sources */,
 				FB99AF101DED193700744F15 /* ConfigGridViewController.swift in Sources */,
+				FB59E35E1DF79FC100FC5DD7 /* Keychain.swift in Sources */,
 				FB01DF6E1DDA9A6300D7AB9A /* Grid.swift in Sources */,
 				FB99AEFC1DE525FE00744F15 /* ConfigurationViewController.swift in Sources */,
 				FBE123421DD158BC00661928 /* InstrumentationViewController.swift in Sources */,

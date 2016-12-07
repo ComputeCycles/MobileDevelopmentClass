@@ -12,10 +12,24 @@ class InstrumentationViewController: UIViewController {
 
     @IBOutlet weak var rowLabel: UILabel!
     @IBOutlet weak var colLabel: UILabel!
+    @IBOutlet weak var rowsSlider: UISlider!
+    @IBOutlet weak var colsSlider: UISlider!
+    
+    var defaults: UserDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let rows = defaults.value(forKey: "Rows") as? Float ?? 5.0
+        rowsSlider.value = rows
+        let cols = defaults.value(forKey: "Columns") as? Float ?? 5.0
+        colsSlider.value = cols
+        defaults.synchronize()
+        let ad = UIApplication.shared.delegate as! AppDelegate
+        ad.engine.grid = Grid(rows: Int(rows),
+                              cols: Int(cols))
+        let center = NotificationCenter.default
+        let n = Notification(name: Notification.Name(rawValue: ENGINE_UPDATED))
+        center.post(n)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,11 +41,13 @@ class InstrumentationViewController: UIViewController {
     @IBAction func changeCols(_ sender: UISlider) {
         let value = Int(sender.value)
         let ad = UIApplication.shared.delegate as! AppDelegate
-        ad.engine.grid = Grid(rows: ad.engine.grid.rows, cols: value)
         colLabel.text = value.description
+        ad.engine.grid = Grid(rows: ad.engine.grid.rows, cols: value)
         let center = NotificationCenter.default
         let n = Notification(name: Notification.Name(rawValue: ENGINE_UPDATED))
         center.post(n)
+        defaults.setValue(value, forKey: "Columns")
+        defaults.synchronize()
     }
     
     @IBAction func changeRows(_ sender: UISlider) {
@@ -42,6 +58,8 @@ class InstrumentationViewController: UIViewController {
         let center = NotificationCenter.default
         let n = Notification(name: Notification.Name(rawValue: ENGINE_UPDATED))
         center.post(n)
+        defaults.setValue(value, forKey: "Rows")
+        defaults.synchronize()
     }
     
     @IBAction func resetRefreshRate(_ sender: UITextField) {
