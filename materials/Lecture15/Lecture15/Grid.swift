@@ -60,13 +60,13 @@ class Grid {
         get {
             guard x >= 0 && y >= 0 else { return nil }
             guard x < cols && y < rows else { return nil }
-            return cells[(x*cols) + y]
+            return cells[(x*rows) + y]
         }
         set {
             guard let newValue = newValue else { return }
             guard x >= 0 && y >= 0 else { return }
             guard x < cols && y < rows else { return }
-            cells[(x*cols) + y] = newValue
+            cells[(x*rows) + y] = newValue
         }
     }
     
